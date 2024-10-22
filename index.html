@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hermanoche</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #ff6f61;
+            color: black;
+            padding: 20px;
+            text-align: center;
+        }    h1 {
+            font-size: 3em;
+            font-weight: bold; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+               }
+     .sidebar {
+       position: fixed;
+         left: -250px;
+         width: 250px;
+        height: 100%;
+         background: #FFDEAD;
+         transition: all .5s ease;
+      }
+     .sidebar header {
+        font-size: 15px;
+      color: black;
+         line-height: 100px;
+         text-align: center;
+          background: #FFF1DC;
+      user-select: none;
+      }
+       .sidebar ul a{
+        display: block;
+        height: 100%;
+           width: 100%;
+       line-height: 70px;
+          font-size: 10px;
+                     color: black;
+        padding-left: 45px;
+              box-sizing: border-box;
+          border-bottom: 1px solid black;
+                border-top: 1px solid rgba(255,255,255,.1);
+       transition: .4s;
+   }
+       ul li:hover a{
+        padding-left: 50px;
+   }
+      .sidebar ul a i{
+          margin-right: 16px;
+      }
+         #check{
+         display: none;
+       }
+     label #btn,label #cancel{
+        position: absolute;
+          background: #042331;
+          border-radius: 3px;
+             cursor: pointer;
+       }
+           label #btn{
+         left: 40px;
+          top: 25px;
+             font-size: 35px;
+         color: white;
+          padding: 6px 12px;
+           transition: all .5s;
+      }
+     label #cancel{
+       z-index: 1111;
+         left: -195px;
+        top: 17px;
+       font-size: 30px;
+        color: #0a5275;
+      padding: 4px 9px;
+             transition: all .5s ease;
+      }
+    #check:checked ~ .sidebar{
+  left: 0;
+    }
+    #check:checked ~ label #btn{
+      left: 250px;
+         opacity: 0;
+      pointer-events: none;
+    }
+    #check:checked ~ label #cancel{
+        left: 195px;
+          }
+      #check:checked ~ section{
+       margin-left: 250px;
+   }
+         section{
+        background: url(bg.jpeg) no-repeat;
+          background-position: center;
+	  background-size: cover;
+ 	height: 100vh;
+         transition: all .5s;
+   
+     }
+        .search-container {
+            margin-right: auto;
+            display: flex;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .search-container button {
+            padding: 10px;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+         text-align: center;
+        }
+
+        .search-container button:hover {
+            background-color: #45a049;
+        }
+     .logo {
+    max-width: 50%;  
+    height: auto;    
+    margin: 10px;
+}
+
+        .banner {
+            text-align: center;
+            padding: 50px 0;
+            background-image: url('https://i.pinimg.com/736x/b8/96/f7/b896f7b6b50120c6a51c05bcc42a9bbb.jpg');
+            background-size: cover;
+            background-position: center;
+            color: black;
+        }
+
+
+        .banner h2 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 1.5em;
+        }
+  nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .products {
+            margin-top: 50px;
+            text-align: left;
+        }
+
+        .products h3 {
+            font-size: 2.5em;
+            color: #ff6f61;
+            margin-bottom: 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product h4 {
+            margin: 15px 0;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .product p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        .product .price {
+            font-size: 1.2em;
+            color: #ff6f61;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #ff6f61;
+}
+
+        .contact-form {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .contact-form h3 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        .contact-form form {
+            max-width: 800px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 80%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            padding: 15px 30px;
+            border: none;
+            background-color: #ff6f61;
+            color: white;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #e65e55;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome Shoppers</h1>
+       <p>Treinta's Shop</p>
+
+   <input type="checkbox" id="check">
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar">
+    <header>MENU</header>
+    <ul>
+  <ul>
+     <li><a href="#"><i class="fas fa-qrcode"></i>Home</a></li>
+     <li><a href="#"><i class="far fa-question-circle"></i>About</a></li>
+     <li><a href="#"><i class="fas fa-sliders-h"></i>Service</a></li>
+     <li><a href="#"><i class="far fa-envelope"></i>Account</a></li>
+    </ul>
+   </div>
+     <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <button type="submit">Search</button>
+        </div>
+ 
+<header>
+        <img src="https://i.pinimg.com/236x/6a/47/34/6a473430e54a3100972cd98c8f2a983b.jpg" alt="Your Logo" class="logo">
+    </header>
+    <section class="banner">
+        <h2>Fuzzy Flowers for Every Occasion</h2>
+        <p>Discover our beautiful arrangements and bouquets</p>
+    </section>
+
+    <div class="container">
+        <section class="products">
+            <h3>Our Products</h3>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="https://i.pinimg.com/enabled_lo/474x/9e/1d/cf/9e1dcfd1e8c4ced347f14d4e0c80fad3.jpg" alt="Rose Bouquet">
+                    <h4>Rose Bouquet</h4>
+                    <p>A stunning arrangement of fresh red roses.</p>
+                    <p class="price">Php:299</p>
+                </div>
+                <div class="product">
+                    <img src="https://i.pinimg.com/474x/51/f6/d4/51f6d4feac002688c2c6819c5ee1a8fd.jpg" alt="Tulip Arrangement">
+                    <h4>Tulip Arrangement</h4>
+                    <p>Vibrant tulips in a beautifully designed vase.</p>
+                    <p class="price">Php:399</p>
+                </div>
+       <div class="product">
+                    <img src="https://i.pinimg.com/736x/f8/b6/7a/f8b67a1e0b02df915a10a097e038b01e.jpg" alt="Yellow Sunflower ">
+                    <h4>Yellow Sunflower</h4>
+                    <p>Yellow beauty blooms sunflower in an array of vibrant colors .</p>
+                    <p class="price">Php:399</p>
+                </div>
+   </header>
+                      <div class="footerBottom">
+        <p>Copyright &copy2024; Designed by:<span>Jocel. All rights reserved.</p></span>
+</div>
+
+</body>
+</html>
